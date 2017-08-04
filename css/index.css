@@ -1,0 +1,67 @@
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+  vertical-align: middle;
+  text-align: center;
+}
+
+table th, tr>td:first-child {
+  width: 15%;
+}
+
+table th, tr>td:nth-child(2) {
+  width: 15%;
+}
+
+table th, tr>td:nth-child(3) {
+  width: 50%;
+}
+
+table th, tr>td:nth-child(5) {
+  width: 10%;
+}
+
+table th, tr>td:last-child {
+  width: 10%;
+}
+
+table th, tr>td:last-child button {
+  margin: 3px auto;
+}
+
+table tr>td img {
+  width: 90%;
+  margin: 0 auto;
+  display: block;
+}
+
+.btn-upload {
+  float: right;
+  margin-right: 15px;
+}
+
+.pagination>li>a.active {
+  background-color: #ddd;
+}
+
+#pagination>span {
+  float: left;
+  margin: 20px 0px;
+  height: 34px;
+  padding: 7px 12px;
+}
+
+span.text-danger {
+  color: red;
+}
+
+span.tag {
+  cursor: pointer;
+}
+
+#progress {
+  margin: 0 auto;
+  width: 60%;
+}
+
+#progress>div {
+  /*width: 60%;*/
+}

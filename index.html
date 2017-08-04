@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>视频管理后台</title>
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+
+   <link rel="stylesheet" href="lib/bootstrap/bootstrap.min.css"> 
+  <!-- <link rel="stylesheet" href="css/style.css"> -->
+  <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="row clearfix">
+      <div class="col-md-12 column">
+        <div class="page-header">
+          <h1>
+					  视频管理
+            <button id="uploadBtn" type="button" class="btn btn-default active btn-info btn-upload">上传视频</button>
+				  </h1>
+        </div>
+
+        <!-- 视频标签 -->
+        <!-- <blockquote id="tag" class="pull-right">
+        </blockquote> -->
+
+        <table class="table" id="videoTable">
+          <thead>
+            <tr>
+              <th>标题</th>
+              <th>缩略图</th>
+              <th>描述</th>
+              <th>创建时间</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+
+          </tbody>
+        </table>
+
+        <div id="pagination">
+
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+  <div class="modal fade in" id="modal-video" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <h4 class="modal-title" id="modalTitle">
+            视频上传
+          </h4>
+        </div>
+        <div class="modal-body">
+
+          <form class="form-horizontal" role="form" id="video-form">
+            <div class="form-group">
+              <label for="inputEmail3" class="col-sm-2 control-label">标题 <span class="text-danger">*</span></label>
+
+              <div class="col-sm-10">
+                <input id="videoTitle" type="text" name="title" class="form-control" maxlength="50" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputPassword3" class="col-sm-2 control-label">描述 <span class="text-danger">*</span></label>
+
+              <div class="col-sm-10">
+                <textarea id="videoDetail" name="detail" rows="4" class="form-control" maxlength="500"></textarea>
+              </div>
+            </div>
+            <!-- <div class="form-group">
+              <label for="inputPassword3" class="col-sm-2 control-label">类型 <span class="text-danger">*</span></label>
+
+              <div class="col-sm-10">
+                <input id="videoType" type="text" name="typeid" class="form-control" maxlength="20" />
+              </div>
+            </div> -->
+            <div class="form-group">
+              <label for="inputPassword3" class="col-sm-2 control-label">流畅视频 <span class="text-danger fileTips">*</span></label>
+
+              <div class="col-sm-10">
+                <input id="smoothFile" type="file" name="upload_file" value="">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputPassword3" class="col-sm-2 control-label">标清视频 <span class="text-danger fileTips">*</span></label>
+
+              <div class="col-sm-10">
+                <input id="SDFile" type="file" name="upload_file" value="">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputPassword3" class="col-sm-2 control-label">高清视频 <span class="text-danger fileTips">*</span></label>
+
+              <div class="col-sm-10">
+                <input id="HDFile" type="file" name="upload_file" value="">
+              </div>
+            </div>
+          </form>
+
+          <!-- 模态框表单提示 -->
+          <div id="modalTips" class="alert alert-dismissable alert-danger">
+          </div>
+          <!-- 模态框表单提示进度条 -->
+          <div id="progress" class="progress progress-striped active">
+            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+              <span class=""></span>
+            </div>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+          <button id="videoSubmit" type="button" class="btn btn-primary">保存</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="lib/jquery/jquery.min.js" charset="utf-8"></script>
+  <script src="lib/bootstrap/bootstrap.min.js" charset="utf-8"></script>
+
+  <script src="js/index.js" charset="utf-8"></script>
+</body>
+
+</html>
