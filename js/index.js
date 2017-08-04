@@ -1,7 +1,8 @@
 $(function () {
+  checkLogin();
 
   const api_url = '',
-    api_path = "/manage/video/";
+    api_path = "/com.iecloud/manage/video/";
 
   let tagFilter = [],
     totalPage = 0,
@@ -401,5 +402,11 @@ $(function () {
       .always(function () {
         // hideProgress();
       })
+  }
+
+  function checkLogin() {
+    if (!sessionStorage.getItem('name')) {
+      location.href = 'login.html';
+    }
   }
 });

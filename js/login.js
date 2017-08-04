@@ -23,12 +23,13 @@ $(function () {
 
   function login(params) {
     $.ajax({
-      url: 'http://59.110.233.230/com.iecloud/user/login.do',
+      url: '/com.iecloud/user/login.do',
       type: 'POST',
       data: params
     })
       .done(function (data) {
         if (data.status == 0) {
+          sessionStorage.setItem('name', data.data.phone);
           location.href = "index.html";
         } else {
           alert('登录失败');
