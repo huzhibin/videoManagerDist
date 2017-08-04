@@ -1,2 +1,2 @@
 # videoManagerDist
-视频管理后台发布版
+视频管理后台上线版
