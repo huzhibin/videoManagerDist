@@ -1,6 +1,4 @@
 $(function () {
-  checkLogin();
-
   const api_url = '',
     api_path = "/com.iecloud/manage/video/";
 
@@ -404,9 +402,4 @@ $(function () {
       })
   }
 
-  function checkLogin() {
-    if (!sessionStorage.getItem('name')) {
-      location.href = 'login.html';
-    }
-  }
 });
