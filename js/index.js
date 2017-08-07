@@ -1,5 +1,5 @@
 $(function () {
-  const api_url = '',
+  const api_url = 'http://59.110.233.230',
     api_path = "/com.iecloud/manage/video/";
 
   let tagFilter = [],
@@ -51,25 +51,49 @@ $(function () {
       // } else if (null == typeid || '' == typeid) {
       //   showModalTips('标签不能为空');
       //   return;
-    } else if ($('#videoSubmit').data('name') == 'upload' && (null == smoothFile || '' == smoothFile)) {
-      showModalTips('上传流畅视频文件不能为空');
-      return;
-    } else if ($('#videoSubmit').data('name') == 'upload' && (null == SDFile || '' == SDFile)) {
-      showModalTips('上传标清视频文件不能为空');
-      return;
-    } else if ($('#videoSubmit').data('name') == 'upload' && (null == HDFile || '' == HDFile)) {
-      showModalTips('上传高清视频文件不能为空');
-      return;
     }
-    //检查视频格式
-    if (
-      ((null == smoothFile || '' == smoothFile) && smoothFile.name.split('.').reverse()[0] != "mp4") ||
-      ((null == SDFile || '' == SDFile) && SDFile.name.split('.').reverse()[0] != "mp4") ||
-      ((null == HDFile || '' == HDFile) && HDFile.name.split('.').reverse()[0] != "mp4") 
-    ) {
-      showModalTips('视频文件必须为mp4格式');
-      return;
+
+    if ($('#videoSubmit').data('name') == 'upload') {
+      if ((null == smoothFile || '' == smoothFile || undefined == smoothFile)) {
+        showModalTips('上传流畅视频文件不能为空');
+        return;
+      } else if (smoothFile.name.split('.').reverse()[0] != "mp4") {
+        showModalTips('视频文件必须为mp4格式');
+        return;
+      } else if ((null == SDFile || '' == SDFile || undefined == SDFile)) {
+        showModalTips('上传标清视频文件不能为空');
+        return;
+      } else if (SDFile.name.split('.').reverse()[0] != "mp4") {
+        showModalTips('视频文件必须为mp4格式');
+        return;
+      } else if ((null == HDFile || '' == HDFile || undefined == HDFile)) {
+        showModalTips('上传高清视频文件不能为空');
+        return;
+      } else if (HDFile.name.split('.').reverse()[0] != "mp4") {
+        showModalTips('视频文件必须为mp4格式');
+        return;
+      }
+    } else if ($('#videoSubmit').data('name') == 'edit') {
+      if ((null != smoothFile && '' != smoothFile && undefined != smoothFile)) {
+        if (smoothFile.name.split('.').reverse()[0] != "mp4") {
+          showModalTips('视频文件必须为mp4格式');
+          return;
+        }
+      }
+      if ((null != SDFile && '' != SDFile && undefined != SDFile)) {
+        if (SDFile.name.split('.').reverse()[0] != "mp4") {
+          showModalTips('视频文件必须为mp4格式');
+          return;
+        }
+      }
+      if ((null != HDFile && '' != HDFile && undefined != HDFile)) {
+        if (HDFile.name.split('.').reverse()[0] != "mp4") {
+          showModalTips('视频文件必须为mp4格式');
+          return;
+        }
+      }
     }
+
     hideModalTips();
     let formData = new FormData($('#video-form')[0]);
     // formData.append("typeid", typeid);
@@ -315,7 +339,7 @@ $(function () {
               ${data.data.list[i].detail}
             </td>
             <td>
-              ${date.datetoISOString().replace(/[TZ]/g, ' ').substring(0, 19)}
+              ${formatDate(date)}
             </td>
             <td>
               <button type="button" class="btn btn-default active btn-warning" href="#modal-video" data-name="edit" data-id="${data.data.list[i].id}"
@@ -411,4 +435,12 @@ $(function () {
       })
   }
 
+  function formatDate(date) {
+    return date.getFullYear()
+        + "-" + (date.getMonth()>8?(date.getMonth()+1):"0"+(date.getMonth()+1))
+        + "-" + (date.getDate()>9?date.getDate():"0"+date.getDate())
+        + " " + (date.getHours()>9?date.getHours():"0"+date.getHours())
+        + ":" + (date.getMinutes()>9?date.getMinutes():"0"+date.getMinutes())
+        + ":" + (date.getSeconds()>9?date.getSeconds():"0"+date.getSeconds());
+}
 });
