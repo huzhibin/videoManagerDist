@@ -53,7 +53,16 @@
         </table>
 
         <div id="pagination">
-
+          <span>第1页</span>
+          <ul class="pagination" id="pagination">
+            <li class="page-item"><a class="page-link" href="#">Prev</a>
+            </li>
+            <li class="page-item active">
+              <a class="page-link" href="#">1</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">Next</a>
+            </li>
+          </ul>
         </div>
       </div>
 
@@ -98,21 +107,21 @@
               <label for="inputPassword3" class="col-sm-2 control-label">流畅视频 <span class="text-danger fileTips">*</span></label>
 
               <div class="col-sm-10">
-                <input id="smoothFile" type="file" name="upload_file" value="">
+                <input id="smoothFile" type="file" name="smoothFile" value="">
               </div>
             </div>
             <div class="form-group">
               <label for="inputPassword3" class="col-sm-2 control-label">标清视频 <span class="text-danger fileTips">*</span></label>
 
               <div class="col-sm-10">
-                <input id="SDFile" type="file" name="upload_file" value="">
+                <input id="SDFile" type="file" name="SDFile" value="">
               </div>
             </div>
             <div class="form-group">
               <label for="inputPassword3" class="col-sm-2 control-label">高清视频 <span class="text-danger fileTips">*</span></label>
 
               <div class="col-sm-10">
-                <input id="HDFile" type="file" name="upload_file" value="">
+                <input id="HDFile" type="file" name="HDFile" value="">
               </div>
             </div>
           </form>
