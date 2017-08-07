@@ -20,7 +20,6 @@ $(function () {
     pageNumber,
     pageSize
   });
-  hideModalTips();
   hideProgress();
   $('#modal-video').modal('hide');
   // getAllTpye();
@@ -62,6 +61,15 @@ $(function () {
       showModalTips('上传高清视频文件不能为空');
       return;
     }
+    //检查视频格式
+    if (
+      ((null == smoothFile || '' == smoothFile) && smoothFile.name.split('.').reverse()[0] != "mp4") ||
+      ((null == SDFile || '' == SDFile) && SDFile.name.split('.').reverse()[0] != "mp4") ||
+      ((null == HDFile || '' == HDFile) && HDFile.name.split('.').reverse()[0] != "mp4") 
+    ) {
+      showModalTips('视频文件必须为mp4格式');
+      return;
+    }
     hideModalTips();
     let formData = new FormData($('#video-form')[0]);
     // formData.append("typeid", typeid);
@@ -96,6 +104,7 @@ $(function () {
     } else if (name == 'upload') {
       $('span.fileTips').show();
     }
+    hideModalTips();
     hideProgress();
   }
 
@@ -306,7 +315,7 @@ $(function () {
               ${data.data.list[i].detail}
             </td>
             <td>
-              ${`${date.getFullYear()}/${date.getMonth()}/${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`}
+              ${date.datetoISOString().replace(/[TZ]/g, ' ').substring(0, 19)}
             </td>
             <td>
               <button type="button" class="btn btn-default active btn-warning" href="#modal-video" data-name="edit" data-id="${data.data.list[i].id}"
