@@ -196,8 +196,8 @@ $(function () {
     let html = "";
     while (totalPage > 0) {
       html = `
-      <li>
-        <a href="javascript:void(0);" data-id="${totalPage}">${totalPage}</a>
+      <li class="page-item">
+        <a class="page-link" href="javascript:void(0);" data-id="${totalPage}">${totalPage}</a>
       </li>
     ` + html;
       totalPage--;
@@ -205,12 +205,12 @@ $(function () {
     html = `
     <span>第${pageNumber}页</span>
     <ul class="pagination">
-      <li>
-        <a href="javascript:void(0);" data-id="prev">Prev</a>
+      <li class="page-item">
+        <a class="page-link" href="javascript:void(0);" data-id="prev">Prev</a>
       </li>
     ` + html + `
-      <li>
-        <a href="javascript:void(0);" data-id="next">Next</a>
+      <li class="page-item">
+        <a class="page-link" href="javascript:void(0);" data-id="next">Next</a>
       </li>
     </ul>
     `;
