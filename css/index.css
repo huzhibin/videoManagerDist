@@ -8,11 +8,11 @@ table th, tr>td:first-child {
 }
 
 table th, tr>td:nth-child(2) {
-  width: 15%;
+  width: 10%;
 }
 
 table th, tr>td:nth-child(3) {
-  width: 50%;
+  width: 55%;
 }
 
 table th, tr>td:nth-child(5) {
@@ -33,19 +33,14 @@ table tr>td img {
   display: block;
 }
 
-.btn-upload {
-  float: right;
-  margin-right: 15px;
-}
-
 .pagination>li>a.active {
   background-color: #ddd;
 }
 
-#pagination>span {
+nav>span {
   float: left;
-  margin: 20px 0px;
-  height: 34px;
+  /* margin: 20px 0px; */
+  height: 35px;
   padding: 7px 12px;
 }
 
@@ -62,6 +57,12 @@ span.tag {
   width: 60%;
 }
 
-#progress>div {
-  /*width: 60%;*/
+#uploadBtn{
+  margin-top: 0;
+  float: right;
+  /* margin-right: 15px; */
+}
+
+nav[name="pagination"]{
+  float:right;
 }

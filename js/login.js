@@ -1,5 +1,11 @@
 $(function () {
   const input_bg_color = $('#username').css('border-color');
+  // const api_url = 'http://59.110.233.230';
+  const api_url = '';
+  const api_path = "/com.iecloud/";
+  const apiInterface = {
+    login: api_url + api_path + 'user/login.do'
+  };
 
   $('#submit').on('click', function () {
     let username = $('#username').val();
@@ -23,7 +29,7 @@ $(function () {
 
   function login(params) {
     $.ajax({
-      url: '/com.iecloud/user/login.do',
+      url: apiInterface.login,
       type: 'POST',
       data: params
     })
@@ -32,14 +38,11 @@ $(function () {
           sessionStorage.setItem('name', data.data.phone);
           location.href = "index.html";
         } else {
-          alert('登录失败');
+          swal('登录失败', '', 'error');
         }
       })
       .fail(function () {
-        alert('执行异常');
+        swal('执行异常', '', 'error');
       });
-
   }
-
-
 });
