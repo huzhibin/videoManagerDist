@@ -55,15 +55,15 @@ $(function () {
         }, '视频编辑', 'edit', $(e.target).data('id'));
       } else if ($(e.target).data('name') == 'delete') {
         swal({
-          title: "确认删除该视频？",
-          text: $(e.target).data('title'),
-          type: "warning",
-          showCancelButton: true,
-          confirmButtonColor: "#DD6B55",
-          confirmButtonText: "确定",
-          cancelButtonText: "取消",
-          closeOnConfirm: false
-        },
+            title: "确认删除该视频？",
+            text: $(e.target).data('title'),
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "确定",
+            cancelButtonText: "取消",
+            closeOnConfirm: false
+          },
           function () {
             deleteVideo({
               id: parseInt($(e.target).data('id'))
@@ -76,6 +76,10 @@ $(function () {
     $('#uploadBtn').on('click', function (e) {
       modalInit(initModalData, '视频上传', 'upload');
     });
+    //关闭视频模态框时停止播放
+    $('#videoPlayModal').on('hide.bs.modal', function () {
+      $('#videoPlayModal video').attr('src', "");
+    })
 
     //提交模态框
     $('#videoSubmit').on('click', function (e) {
@@ -189,7 +193,7 @@ $(function () {
     $('#videoPlayModal h4.modal-title').text(title);
     $('#videoPlayModal video').attr('src', source);
 
-    $('#showVideoPlayModal').trigger('click');//显示模态框
+    $('#videoPlayModal').modal('show'); //显示模态框
   }
 
   //设置上传文件进度条
@@ -212,26 +216,26 @@ $(function () {
   //上传视频
   function uploadVideoRecord(params) {
     $.ajax({
-      url: apiInterface.uploadVideoRecord,
-      type: 'post',
-      // 不要去处理发送的数据
-      processData: false,
-      // 不要去设置Content-Type请求头
-      contentType: false,
-      data: params,
-      xhr: function () {
-        showProgress();
-        let xhr = $.ajaxSettings.xhr();
-        xhr.upload.onprogress = function (e) {
-          setProgress(Math.floor(e.loaded / e.total * 100) + '%');
-        };
-        return xhr;
-      },
-    })
+        url: apiInterface.uploadVideoRecord,
+        type: 'post',
+        // 不要去处理发送的数据
+        processData: false,
+        // 不要去设置Content-Type请求头
+        contentType: false,
+        data: params,
+        xhr: function () {
+          showProgress();
+          let xhr = $.ajaxSettings.xhr();
+          xhr.upload.onprogress = function (e) {
+            setProgress(Math.floor(e.loaded / e.total * 100) + '%');
+          };
+          return xhr;
+        },
+      })
       .done(function (data) {
         if (data.status == 0) {
           swal('上传成功', '', 'success');
-          $('#modalClose').trigger('click');
+          $('#modalVideo').modal('hide');
           getVideoList({
             pageNumber,
             pageSize
@@ -251,10 +255,10 @@ $(function () {
   //删除视频
   function deleteVideo(params) {
     $.ajax({
-      url: apiInterface.deleteVideo,
-      type: 'get',
-      data: params
-    })
+        url: apiInterface.deleteVideo,
+        type: 'get',
+        data: params
+      })
       .done(function (data) {
         if (data.status == 0) {
           swal('删除成功', '', 'success');
@@ -274,12 +278,12 @@ $(function () {
   // 获取视频列表
   function getVideoList(params) {
     $.ajax({
-      url: apiInterface.getVideoList,
-      type: 'post',
-      dataType: '',
-      data: params,
+        url: apiInterface.getVideoList,
+        type: 'post',
+        dataType: '',
+        data: params,
 
-    })
+      })
       .done(function (data) {
         if (data.status == 0) {
           let html = "";
@@ -333,25 +337,25 @@ $(function () {
   // 编辑视频
   function updateVideo(params) {
     $.ajax({
-      url: apiInterface.updateVideo,
-      type: 'post',
-      // 不要去处理发送的数据
-      processData: false,
-      // 不要去设置Content-Type请求头
-      contentType: false,
-      data: params,
-      xhr: function () {
-        let xhr = $.ajaxSettings.xhr();
-        xhr.upload.onprogress = function (e) {
-          setProgress(Math.floor(e.loaded / e.total * 100) + '%');
-        };
-        return xhr;
-      },
-    })
+        url: apiInterface.updateVideo,
+        type: 'post',
+        // 不要去处理发送的数据
+        processData: false,
+        // 不要去设置Content-Type请求头
+        contentType: false,
+        data: params,
+        xhr: function () {
+          let xhr = $.ajaxSettings.xhr();
+          xhr.upload.onprogress = function (e) {
+            setProgress(Math.floor(e.loaded / e.total * 100) + '%');
+          };
+          return xhr;
+        },
+      })
       .done(function (data) {
         if (data.status == 0) {
           swal('编辑成功', '', 'success');
-          $('#modalClose').trigger('click');
+          $('#modalVideo').modal('hide');
           getVideoList({
             pageNumber,
             pageSize
@@ -369,11 +373,11 @@ $(function () {
   }
 
   function formatDate(date) {
-    return date.getFullYear()
-      + "-" + (date.getMonth() > 8 ? (date.getMonth() + 1) : "0" + (date.getMonth() + 1))
-      + "-" + (date.getDate() > 9 ? date.getDate() : "0" + date.getDate())
-      + " " + (date.getHours() > 9 ? date.getHours() : "0" + date.getHours())
-      + ":" + (date.getMinutes() > 9 ? date.getMinutes() : "0" + date.getMinutes())
-      + ":" + (date.getSeconds() > 9 ? date.getSeconds() : "0" + date.getSeconds());
+    return date.getFullYear() +
+      "-" + (date.getMonth() > 8 ? (date.getMonth() + 1) : "0" + (date.getMonth() + 1)) +
+      "-" + (date.getDate() > 9 ? date.getDate() : "0" + date.getDate()) +
+      " " + (date.getHours() > 9 ? date.getHours() : "0" + date.getHours()) +
+      ":" + (date.getMinutes() > 9 ? date.getMinutes() : "0" + date.getMinutes()) +
+      ":" + (date.getSeconds() > 9 ? date.getSeconds() : "0" + date.getSeconds());
   }
 });
