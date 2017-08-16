@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="视频管理后台登录">
+  <meta name="author" content="hzb">
+  <meta name="keyword" content="视频,管理,后台,登录">
+  <link rel="shortcut icon" href="img/favicon.ico">
+
+  <title>app</title>
+  <link href="css/style.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-image: url('./img/login-bg.min.jpg');
+      background-size: cover;
+    }
+
+    #appQRCode {
+      /* position: fixed; */
+      /* right: 4%;
+      bottom: 4%; */
+      text-align: center;
+    }
+
+    #appQRCode img {
+      display: block;
+      width: 120px;
+      margin: 0 auto;
+    }
+    a{
+      text-decoration: none;
+      color: white;
+    }
+    a:active,a:hover{
+      text-decoration: none;
+      color: white;
+    }
+    button[name="login"]{
+      position: fixed;
+      left:20px;
+      top: 20px;
+      color: #63c2de;
+    }
+    button[name="login"] a{   
+      color: #63c2de;
+    }
+  </style>
+</head>
+
+<body class="app flex-row align-items-center">
+
+  <button type="button" class="btn btn-outline-info" name="login">
+    <a href="http://59.110.233.230/com.iecloud/login.html">后台登录</a>
+  </button>
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+
+        <a href="http://59.110.233.230/IECloud.apk" id="appQRCode"> 
+          <img src="./img/app-qr-code.png" alt="">
+          点击二维码下载app
+        </a>
+
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

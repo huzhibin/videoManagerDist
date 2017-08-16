@@ -25,8 +25,8 @@ $(function () {
   //页面初始化
   function init() {
     getVideoList({
-      pageNumber,
-      pageSize
+      pageNumber: pageNumber,
+      pageSize: pageSize
     });
 
     //初始化分页
@@ -37,8 +37,8 @@ $(function () {
       onPageChange: function (num, type) {
         pageNumber = num;
         getVideoList({
-          pageNumber,
-          pageSize
+          pageNumber: pageNumber,
+          pageSize: pageSize
         })
       }
     });
@@ -163,6 +163,7 @@ $(function () {
     $('#modalTips').html(tips);
     $('#modalTips').show();
   }
+
   function hideModalTips() {
     $('#modalTips').hide();
   }
@@ -237,8 +238,8 @@ $(function () {
           swal('上传成功', '', 'success');
           $('#modalVideo').modal('hide');
           getVideoList({
-            pageNumber,
-            pageSize
+            pageNumber: pageNumber,
+            pageSize: pageSize
           });
         } else {
           swal('上传失败', '', 'error');
@@ -263,8 +264,8 @@ $(function () {
         if (data.status == 0) {
           swal('删除成功', '', 'success');
           getVideoList({
-            pageNumber,
-            pageSize
+            pageNumber: pageNumber,
+            pageSize: pageSize
           });
         } else {
           swal('删除失败', '', 'error');
@@ -357,8 +358,8 @@ $(function () {
           swal('编辑成功', '', 'success');
           $('#modalVideo').modal('hide');
           getVideoList({
-            pageNumber,
-            pageSize
+            pageNumber: pageNumber,
+            pageSize: pageSize
           });
         } else {
           swal('编辑失败', '', 'error');
